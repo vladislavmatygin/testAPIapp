@@ -189,7 +189,6 @@
 			isa = PBXGroup;
 			children = (
 				6900B1972D10A2FA00119A41 /* Search */,
-				6900B1952D10A22000119A41 /* Profile */,
 				6900B19F2D10A65B00119A41 /* Common */,
 				6900B16C2D108FF600119A41 /* Main */,
 			);
@@ -299,22 +298,6 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
-		6900B1952D10A22000119A41 /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-				6900B1962D10A28E00119A41 /* Builder */,
-				6900B19C2D10A36100119A41 /* Main */,
-			);
-			path = Profile;
-			sourceTree = "<group>";
-		};
-		6900B1962D10A28E00119A41 /* Builder */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Builder;
-			sourceTree = "<group>";
-		};
 		6900B1972D10A2FA00119A41 /* Search */ = {
 			isa = PBXGroup;
 			children = (
@@ -358,29 +341,6 @@
 				6900B1BD2D10B57B00119A41 /* SearchBuilder.swift */,
 			);
 			path = Builder;
-			sourceTree = "<group>";
-		};
-		6900B19C2D10A36100119A41 /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				6900B19E2D10A37A00119A41 /* Presenter */,
-				6900B19D2D10A37300119A41 /* View */,
-			);
-			path = Main;
-			sourceTree = "<group>";
-		};
-		6900B19D2D10A37300119A41 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		6900B19E2D10A37A00119A41 /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Presenter;
 			sourceTree = "<group>";
 		};
 		6900B19F2D10A65B00119A41 /* Common */ = {
