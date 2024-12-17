@@ -57,6 +57,14 @@
 		6900B1F52D10CEAF00119A41 /* UIControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6900B1F42D10CEAF00119A41 /* UIControl.swift */; };
 		6900B1F72D10CEF700119A41 /* UIViewController+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6900B1F62D10CEF700119A41 /* UIViewController+Extentions.swift */; };
 		6900B1F92D10CF3600119A41 /* UIApplication+Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6900B1F82D10CF3600119A41 /* UIApplication+Window.swift */; };
+		69DAB4852D11EBE0007F4726 /* ProfileBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DAB4842D11EBE0007F4726 /* ProfileBuilder.swift */; };
+		69DAB4872D11ED97007F4726 /* CardOnMainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DAB4862D11ED97007F4726 /* CardOnMainCell.swift */; };
+		69DAB48A2D11EF11007F4726 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 69DAB4892D11EF11007F4726 /* SDWebImage */; };
+		69DAB48C2D11EF11007F4726 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 69DAB48B2D11EF11007F4726 /* SDWebImageMapKit */; };
+		69DAB48E2D11F393007F4726 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DAB48D2D11F393007F4726 /* ProfileViewController.swift */; };
+		69DAB4902D11F3A6007F4726 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DAB48F2D11F3A6007F4726 /* ProfilePresenter.swift */; };
+		69DAB4922D11F3BA007F4726 /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DAB4912D11F3BA007F4726 /* ProfileRouter.swift */; };
+		69DAB4942D11F3CF007F4726 /* ProfileDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DAB4932D11F3CF007F4726 /* ProfileDataSource.swift */; };
 		69ECBACD2D10D73A0012AE3D /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 69ECBACC2D10D73A0012AE3D /* SnapKit */; };
 /* End PBXBuildFile section */
 
@@ -112,6 +120,12 @@
 		6900B1F42D10CEAF00119A41 /* UIControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIControl.swift; sourceTree = "<group>"; };
 		6900B1F62D10CEF700119A41 /* UIViewController+Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extentions.swift"; sourceTree = "<group>"; };
 		6900B1F82D10CF3600119A41 /* UIApplication+Window.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Window.swift"; sourceTree = "<group>"; };
+		69DAB4842D11EBE0007F4726 /* ProfileBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileBuilder.swift; sourceTree = "<group>"; };
+		69DAB4862D11ED97007F4726 /* CardOnMainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardOnMainCell.swift; sourceTree = "<group>"; };
+		69DAB48D2D11F393007F4726 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		69DAB48F2D11F3A6007F4726 /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
+		69DAB4912D11F3BA007F4726 /* ProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRouter.swift; sourceTree = "<group>"; };
+		69DAB4932D11F3CF007F4726 /* ProfileDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,7 +134,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				69ECBACD2D10D73A0012AE3D /* SnapKit in Frameworks */,
+				69DAB48C2D11EF11007F4726 /* SDWebImageMapKit in Frameworks */,
 				6900B1D42D10BB1000119A41 /* Logging in Frameworks */,
+				69DAB48A2D11EF11007F4726 /* SDWebImage in Frameworks */,
 				6900B1EB2D10CB2000119A41 /* OrderedCollections in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -188,6 +204,7 @@
 		6900B16B2D108FE700119A41 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				69DAB47F2D11EB7C007F4726 /* Profile */,
 				6900B1972D10A2FA00119A41 /* Search */,
 				6900B19F2D10A65B00119A41 /* Common */,
 				6900B16C2D108FF600119A41 /* Main */,
@@ -428,6 +445,7 @@
 			isa = PBXGroup;
 			children = (
 				6900B1DE2D10C7BE00119A41 /* LoadingCell.swift */,
+				69DAB4862D11ED97007F4726 /* CardOnMainCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -473,6 +491,50 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		69DAB47F2D11EB7C007F4726 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				69DAB4802D11EB99007F4726 /* Builder */,
+				69DAB4812D11EBA2007F4726 /* Main */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		69DAB4802D11EB99007F4726 /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				69DAB4842D11EBE0007F4726 /* ProfileBuilder.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
+		69DAB4812D11EBA2007F4726 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				69DAB4832D11EBBC007F4726 /* Presenter */,
+				69DAB4822D11EBB2007F4726 /* View */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		69DAB4822D11EBB2007F4726 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				69DAB48D2D11F393007F4726 /* ProfileViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		69DAB4832D11EBBC007F4726 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				69DAB4912D11F3BA007F4726 /* ProfileRouter.swift */,
+				69DAB48F2D11F3A6007F4726 /* ProfilePresenter.swift */,
+				69DAB4932D11F3CF007F4726 /* ProfileDataSource.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -493,6 +555,8 @@
 				6900B1D32D10BB1000119A41 /* Logging */,
 				6900B1EA2D10CB2000119A41 /* OrderedCollections */,
 				69ECBACC2D10D73A0012AE3D /* SnapKit */,
+				69DAB4892D11EF11007F4726 /* SDWebImage */,
+				69DAB48B2D11EF11007F4726 /* SDWebImageMapKit */,
 			);
 			productName = testAPIapp;
 			productReference = 6900B1512D1089F400119A41 /* testAPIapp.app */;
@@ -526,6 +590,7 @@
 				6900B1D22D10BB1000119A41 /* XCRemoteSwiftPackageReference "swift-log" */,
 				6900B1DA2D10C65C00119A41 /* XCRemoteSwiftPackageReference "swift-collections" */,
 				69ECBACB2D10D73A0012AE3D /* XCRemoteSwiftPackageReference "SnapKit" */,
+				69DAB4882D11EF11007F4726 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = 6900B1522D1089F400119A41 /* Products */;
 			projectDirPath = "";
@@ -555,6 +620,7 @@
 			files = (
 				6900B1BE2D10B57B00119A41 /* SearchBuilder.swift in Sources */,
 				6900B1752D10952A00119A41 /* DarkTheme.swift in Sources */,
+				69DAB4942D11F3CF007F4726 /* ProfileDataSource.swift in Sources */,
 				6900B1D02D10B94A00119A41 /* NSDiffableDataSourceSnapshot.swift in Sources */,
 				6900B18D2D109EDB00119A41 /* ApplicationRouter.swift in Sources */,
 				6900B1AE2D10A7B200119A41 /* UILabel+Observer.swift in Sources */,
@@ -571,19 +637,23 @@
 				6900B17E2D1096C700119A41 /* ThemeService.swift in Sources */,
 				6900B1B52D10A83100119A41 /* NSMutableParagraphStyle+Helper.swift in Sources */,
 				6900B1922D109F8800119A41 /* GlobalRouter.swift in Sources */,
+				69DAB4902D11F3A6007F4726 /* ProfilePresenter.swift in Sources */,
 				6900B1552D1089F400119A41 /* AppDelegate.swift in Sources */,
 				6900B16F2D1091E200119A41 /* MenuTabBarController.swift in Sources */,
 				6900B18B2D109D1400119A41 /* ShadowView.swift in Sources */,
 				6900B1902D109F1000119A41 /* Router.swift in Sources */,
 				6900B1852D1098AA00119A41 /* Core.swift in Sources */,
+				69DAB4922D11F3BA007F4726 /* ProfileRouter.swift in Sources */,
 				6900B1B72D10A84800119A41 /* NSAttributedString+Helper.swift in Sources */,
 				6900B1572D1089F400119A41 /* SceneDelegate.swift in Sources */,
 				6900B1A32D10A68000119A41 /* TooltipViewController.swift in Sources */,
 				6900B1F52D10CEAF00119A41 /* UIControl.swift in Sources */,
+				69DAB4872D11ED97007F4726 /* CardOnMainCell.swift in Sources */,
 				6900B1B32D10A81200119A41 /* NSParagraphStyle+Mutable.swift in Sources */,
 				6900B1792D10957500119A41 /* LightTheme.swift in Sources */,
 				6900B1F72D10CEF700119A41 /* UIViewController+Extentions.swift in Sources */,
 				6900B1772D10955900119A41 /* Themeable.swift in Sources */,
+				69DAB48E2D11F393007F4726 /* ProfileViewController.swift in Sources */,
 				6900B1882D109A0400119A41 /* AppearanceConfigurator.swift in Sources */,
 				6900B1AA2D10A75800119A41 /* TypographyExtensions.swift.swift in Sources */,
 				6900B1D72D10BB6500119A41 /* Logger.swift in Sources */,
@@ -595,6 +665,7 @@
 				6900B1AC2D10A77000119A41 /* Typography.swift in Sources */,
 				6900B1DF2D10C7BE00119A41 /* LoadingCell.swift in Sources */,
 				6900B17C2D10969200119A41 /* UIColor+Extension.swift in Sources */,
+				69DAB4852D11EBE0007F4726 /* ProfileBuilder.swift in Sources */,
 				6900B1C92D10B82500119A41 /* MainDataSource.swift in Sources */,
 				6900B1A52D10A6D000119A41 /* Label.swift in Sources */,
 				6900B1942D10A0E500119A41 /* MainRouter.swift in Sources */,
@@ -833,6 +904,14 @@
 				version = 1.1.2;
 			};
 		};
+		69DAB4882D11EF11007F4726 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = exactVersion;
+				version = 5.20.0;
+			};
+		};
 		69ECBACB2D10D73A0012AE3D /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -853,6 +932,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6900B1DA2D10C65C00119A41 /* XCRemoteSwiftPackageReference "swift-collections" */;
 			productName = OrderedCollections;
+		};
+		69DAB4892D11EF11007F4726 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 69DAB4882D11EF11007F4726 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		69DAB48B2D11EF11007F4726 /* SDWebImageMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 69DAB4882D11EF11007F4726 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImageMapKit;
 		};
 		69ECBACC2D10D73A0012AE3D /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;

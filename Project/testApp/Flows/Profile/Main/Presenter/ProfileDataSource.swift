@@ -1,6 +1,6 @@
 import UIKit
 
-final class MainDataSource: DataSource {
+final class ProfileDataSource: DataSource {
     struct Model {
 
     }

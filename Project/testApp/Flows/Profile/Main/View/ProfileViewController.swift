@@ -2,9 +2,9 @@ import Combine
 import UIKit
 import SnapKit
 
-protocol MainViewInput: ViewInput<MainViewController.State> {}
+protocol ProfileViewInput: ViewInput<ProfileViewController.State> {}
 
-final class MainViewController: AppViewController, ProgressView {
+final class ProfileViewController: AppViewController, ProgressView {
     enum State {
         case snapshot(Snapshot)
         case isLoading(Bool)
@@ -19,7 +19,7 @@ final class MainViewController: AppViewController, ProgressView {
 
     private(set) var collectionView = CollectionView()
 
-    private let presenter: MainPresenterOutput
+    private let presenter: ProfilePresenterOutput
     private let closedHeaderHeight: CGFloat = 65
     private lazy var commonNavigationBarHeight: CGFloat = safeAreaTopInset + 16 + 86 + 22
 
@@ -29,15 +29,12 @@ final class MainViewController: AppViewController, ProgressView {
 
     private(set) var isHeaderOpen = true
 
-    private let navigationView = MainNavigationView()
-    private lazy var navigationViewTapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapNavigationBar))
-
     private var cancellables = Set<AnyCancellable>()
     private let actualScrolledIndexPathSubject = PassthroughSubject<IndexPath, Never>()
 
     // MARK: - Init
 
-    init(presenter: MainPresenterOutput) {
+    init(presenter: ProfilePresenterOutput) {
         self.presenter = presenter
         super.init()
     }
@@ -61,10 +58,6 @@ final class MainViewController: AppViewController, ProgressView {
         if tabBarController?.tabBar.isHidden == true {
             tabBarController?.tabBar.isHidden = false
         }
-
-        if let navigationBar = navigationController?.navigationBar {
-            navigationBar.addGestureRecognizer(navigationViewTapGesture)
-        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -72,17 +65,8 @@ final class MainViewController: AppViewController, ProgressView {
         presenter.viewDidAppear()
     }
 
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-
-        if let navigationBar = navigationController?.navigationBar {
-            navigationBar.removeGestureRecognizer(navigationViewTapGesture)
-        }
-    }
-
     override func drawSelf() {
         collectionView.layoutDelegate = self
-        navigationView.delegate = presenter as? MainPresenter
 
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
@@ -105,35 +89,23 @@ final class MainViewController: AppViewController, ProgressView {
         collectionView.delegate = self
         collectionView.alwaysBounceVertical = true
 
-        view.addSubview(navigationView)
         view.addSubview(collectionView)
     }
 
     override func makeConstraints() {
-        navigationView.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(commonNavigationBarHeight)
-        }
-
         collectionView.snp.makeConstraints {
-            $0.top.equalTo(navigationView.snp.bottom)
+            $0.top.equalToSuperview()
             $0.leading.trailing.bottom.equalToSuperview()
         }
     }
 
     override func makeAppearance() {
-        view.backgroundColor = theme.backgroundExtraSurface
-    }
-
-    // MARK: - Private methods
-    @objc private func didTapNavigationBar() {
-        presenter.didTapNavigationView()
+        view.backgroundColor = theme.backgroundSuccess
     }
 }
 
-// MARK: - MainViewInput
-extension MainViewController: MainViewInput {
+// MARK: - ProfileViewInput
+extension ProfileViewController: ProfileViewInput {
     @MainActor
     func apply(_ state: State) {
         switch state {
@@ -158,7 +130,7 @@ extension MainViewController: MainViewInput {
 }
 
 // MARK: - CollectionViewLayoutDelegate
-extension MainViewController: CollectionViewLayoutDelegate {
+extension ProfileViewController: CollectionViewLayoutDelegate {
     func makeLayout(dataSource: CollectionDataSource) -> UICollectionViewLayout {
         let config = UICollectionViewCompositionalLayoutConfiguration()
         let layout = UICollectionViewCompositionalLayout(sectionProvider: { [weak self] index, _ in
@@ -212,7 +184,7 @@ extension MainViewController: CollectionViewLayoutDelegate {
 }
 
 // MARK: - UICollectionViewDelegate
-extension MainViewController: UICollectionViewDelegate {
+extension ProfileViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
     }

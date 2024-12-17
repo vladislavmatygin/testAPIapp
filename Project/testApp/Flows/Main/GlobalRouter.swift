@@ -18,6 +18,7 @@ final class GlobalRouter: Router {
 
     private(set) static var shared: GlobalRouter?
     private(set) var searchRouter: MainRouter?
+    private(set) var profileRouter: ProfileRouter?
 
     weak var navigationController: UINavigationController?
 
@@ -51,16 +52,16 @@ final class GlobalRouter: Router {
             navigationController.viewControllers = [viewController]
 
             tabBarController.viewControllers = (tabBarController.viewControllers ?? []) + [navigationController]
-        default:
+        case .profile:
             let navigationController = UINavigationController()
 
-            navigationController.tabBarItem.image = UIImage(named: "iconMenuSearch")
-            navigationController.tabBarItem.title = "Search"
+            navigationController.tabBarItem.image = UIImage(named: "iconMenuCabinet")
+            navigationController.tabBarItem.title = "Profile"
 
-            let router = MainRouter(navigationController: navigationController)
-            searchRouter = router
+            let router = ProfileRouter(navigationController: navigationController)
+            profileRouter = router
 
-            let viewController = SearchBuilder.build(router: router)
+            let viewController = ProfileBuilder.build(router: router)
 
             navigationController.viewControllers = [viewController]
 
