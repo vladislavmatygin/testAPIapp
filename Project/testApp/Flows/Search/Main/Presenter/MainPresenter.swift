@@ -9,13 +9,14 @@ protocol MainPresenterOutput: AnyObject, ViewOutput {
 
 final class MainPresenter {
     private struct State {
-        // states
+        var popularAlbums: [PopularAlbumUIO] = []
     }
 
     // MARK: - Properties
 
     weak var view: (any MainViewInput)?
 
+    private let searchService = SearchService.shared
     private let dataSource: MainDataSource
 
     private var cancellables = Set<AnyCancellable>()
@@ -37,12 +38,24 @@ final class MainPresenter {
             guard let self else { return }
 
             let result = dataSource.make(
-                model: MainDataSource.Model()
+                model: MainDataSource.Model(
+                    popularAlbums: state.popularAlbums
+                )
             )
 
             view?.apply(.isLoading(false))
             view?.apply(.snapshot(result))
         }.store(in: &cancellables)
+
+        searchService.searchActionSubject
+            .receive(on: RunLoop.main)
+            .sink { [weak self] action in
+                switch action {
+                case let .addPopularAlbums(albums):
+                    //TODO: finish this
+                    break
+                }
+            }.store(in: &cancellables)
     }
 
     private func setState(_ updateState: (inout State) -> Void) async {
