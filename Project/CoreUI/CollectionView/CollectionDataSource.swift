@@ -61,14 +61,6 @@ extension CollectionConfigurable {
 typealias Snapshot = NSDiffableDataSourceSnapshot<CollectionIdentifier, CollectionIdentifier>
 
 // MARK: - CollectionDataSource
-/*
- Возможно в будущем хотелось бы видеть API
- let source = CollectionDataSource()
- source.append()
- source.append()
-
- Чтобы сделать единый источник а не 2: CollectionDataSource + SnapshotMaker
- */
 final class CollectionDataSource: UICollectionViewDiffableDataSource<CollectionIdentifier, CollectionIdentifier> {
     private(set) var sections: [CollectionItemable] = []
     private(set) var items: [CollectionItemable] = []

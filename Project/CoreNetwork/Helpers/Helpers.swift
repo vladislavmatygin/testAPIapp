@@ -2,7 +2,11 @@ import Foundation
 
 public struct Environment {
     public static let rootURL: String = {
-       "https://itunes.apple.com/"
+       "https://api.spotify.com/v1/"
+    }()
+
+    public static let accessToken: String = {
+       "Bearer BQCehRPaS-c4kXHB3sfQWNDWHAgNiPMCcQmweK1mHPI1Vx-2kkdq9NWXsrg_BOtLKeaqDSXMTw-jm-RyAYCqgnJ9wgzoN4uL4RbdpgxAffRFF_i-Npc"
     }()
 }
 

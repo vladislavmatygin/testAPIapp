@@ -1,11 +1,17 @@
 import Foundation
 
 final class SearchMapper {
-    static func map(_ dto: PopularAlbumsDTO) -> [PopularAlbumUIO] {
-        return dto.results.albums.data.compactMap { albumData in
-            guard let imageUrl = URL(string: albumData.attributes.artwork.url) else { return nil }
+    static func map(
+        _ data: PopularAlbumsDTO
+    ) -> [PopularAlbumUIO] {
+        return data.albums.items.compactMap { albumItem in
+            guard let imageUrlString = albumItem.images.first?.url,
+                  let imageUrl = URL(string: imageUrlString) else {
+                return nil
+            }
+
             return PopularAlbumUIO(
-                title: albumData.attributes.name,
+                title: albumItem.name,
                 imageUrl: imageUrl
             )
         }

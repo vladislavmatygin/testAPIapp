@@ -52,8 +52,7 @@ final class MainPresenter {
             .sink { [weak self] action in
                 switch action {
                 case let .addPopularAlbums(albums):
-                    //TODO: finish this
-                    break
+                    self?.state.popularAlbums = albums
                 }
             }.store(in: &cancellables)
     }
@@ -61,6 +60,27 @@ final class MainPresenter {
     private func setState(_ updateState: (inout State) -> Void) async {
         await MainActor.run {
             updateState(&state)
+        }
+    }
+}
+
+// MARK: - Network
+private extension MainPresenter {
+    func makeRequest() {
+        Task {
+            async let popularAlbums: () = getPopularAlbums()
+
+            _ = try await popularAlbums
+        }.fail {
+            logger.error("\(String(describing: $0))")
+        }
+    }
+
+    func getPopularAlbums() async throws {
+        let albums = try await searchService.getPopularAlbums()
+
+        await setState {
+            $0.popularAlbums = albums
         }
     }
 }
@@ -73,6 +93,7 @@ extension MainPresenter: MainPresenterOutput {
     func viewDidLoad() {
         view?.apply(.isLoading(true))
 
+        makeRequest()
         configurePresenter()
     }
 }
