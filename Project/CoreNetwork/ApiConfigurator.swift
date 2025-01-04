@@ -28,6 +28,10 @@ extension ApiConfigurator {
         Environment.rootURL
     }
 
+    var accessToken: String {
+        Environment.accessToken
+    }
+
     private var platform: String {
         "ios"
     }
@@ -42,7 +46,7 @@ extension ApiConfigurator {
     }
 
     func asURLRequest(_ token: String? = nil) throws -> URLRequest {
-        guard let baseUrl = URL(string: rootURL + apiPrefix + "/"),
+        guard let baseUrl = URL(string: rootURL),
               let url = URL(string: path, relativeTo: baseUrl),
               var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true) else {
             throw ApiConfiguratorError.invalidURL(self)
@@ -60,6 +64,7 @@ extension ApiConfigurator {
 
         urlRequest.httpMethod = method.rawValue
 
+        urlRequest.setValue(accessToken, forHTTPHeaderField: HTTPHeaderField.authentication.rawValue)
         urlRequest.setValue(contentType.rawValue, forHTTPHeaderField: HTTPHeaderField.acceptType.rawValue)
         urlRequest.setValue(contentType.rawValue, forHTTPHeaderField: HTTPHeaderField.contentType.rawValue)
         urlRequest.setValue(userAgent, forHTTPHeaderField: HTTPHeaderField.userAgent.rawValue)

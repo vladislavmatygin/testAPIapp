@@ -97,11 +97,11 @@ final class CardOnMainCell: AppCollectionCell, Delegatable {
 extension CardOnMainCell: CollectionConfigurable {
     struct Item: CollectionItemable {
         let identifier: CollectionIdentifier
-        let imageUrl: URL?
         let card: Card
-        init(imageUrl: URL?, card: Card) {
+        let data: PopularAlbumUIO
+        init(data: PopularAlbumUIO, card: Card) {
             identifier = CollectionIdentifier(card.hashValue)
-            self.imageUrl = imageUrl
+            self.data = data
             self.card = card
         }
     }
@@ -111,7 +111,7 @@ extension CardOnMainCell: CollectionConfigurable {
 
         descriptionLabel.isHidden = item.card.isShort
 
-        imageView.sd_setImage(with: item.imageUrl, placeholderImage: UIImage(named: "placeholderImage"))
+        imageView.sd_setImage(with: item.data.imageUrl, placeholderImage: UIImage(named: "placeholderImage"))
 
         switch item.card {
         case let .short(_, title):

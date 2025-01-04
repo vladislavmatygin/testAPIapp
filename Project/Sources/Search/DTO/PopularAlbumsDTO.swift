@@ -1,25 +1,17 @@
 import Foundation
 
 struct PopularAlbumsDTO: Decodable {
-    let results: Results
+    let albums: Albums
 
-    struct Results: Decodable {
-        let albums: Albums
+    struct Albums: Decodable {
+        let items: [AlbumItem]
 
-        struct Albums: Decodable {
-            let data: [AlbumData]
+        struct AlbumItem: Decodable {
+            let name: String
+            let images: [AlbumImage]
 
-            struct AlbumData: Decodable {
-                let attributes: AlbumAttributes
-
-                struct AlbumAttributes: Decodable {
-                    let name: String
-                    let artwork: Artwork
-
-                    struct Artwork: Decodable {
-                        let url: String
-                    }
-                }
+            struct AlbumImage: Decodable {
+                let url: String
             }
         }
     }

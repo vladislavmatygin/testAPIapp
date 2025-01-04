@@ -87,17 +87,12 @@ final class MainViewController: AppViewController, ProgressView {
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
 
-//        collectionView.register(header: MainHorizontalSection.self)
-//        collectionView.register(header: EmptySection.self)
-//        collectionView.register(
-//            MainTitleCell.self,
-//            SUCardOnMainCell.self,
-//            MainReviewCell.self,
-//            MainReviewSkeletonCell.self,
-//            MainRecentSearchCell.self,
-//            MainBannerCell.self,
-//            MainOtherPeopleReviewCell.self
-//        )
+        collectionView.register(header: MainHorizontalSection.self)
+        collectionView.register(header: EmptySection.self)
+        collectionView.register(
+            MainTitleCell.self,
+            CardOnMainCell.self
+        )
 
         collectionView.layer.cornerRadius = 16
         collectionView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
@@ -166,13 +161,18 @@ extension MainViewController: CollectionViewLayoutDelegate {
                 fatalError()
             }
 
-//            let searchSection = dataSource.getSection(id) as? MainHorizontalSection.Item
+            let searchSection = dataSource.getSection(id) as? MainHorizontalSection.Item
 
             var groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(1))
             let horizontalInset: CGFloat = 8
             var sectionContentInsets: NSDirectionalEdgeInsets = .zero
 
-            groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(54))
+            switch searchSection?.type {
+            case .popular:
+                groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.43), heightDimension: .absolute(193))
+            default:
+                groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(54))
+            }
 
             let item = NSCollectionLayoutItem(
                 layoutSize: NSCollectionLayoutSize(
