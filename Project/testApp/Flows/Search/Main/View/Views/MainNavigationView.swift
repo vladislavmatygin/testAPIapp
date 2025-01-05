@@ -14,7 +14,7 @@ final class MainNavigationView: AppView {
     private let button = SearchNavigationButton()
 
     override func drawSelf() {
-        imageView.image = UIImage(named: "fix me")
+        imageView.image = UIImage(named: "logotype")
         button.layer.cornerRadius = 12
         button.addAction(for: .touchUpInside) { [weak self] _ in
             self?.delegate?.didTapNavigationFindButton()
@@ -57,8 +57,8 @@ final class SearchNavigationButton: AppControl {
     private let imageView = UIImageView()
 
     override func drawSelf() {
-        titleLabel.apply(font: .body1, text: "fix me")
-        imageView.image = UIImage(named: "fix me")?.withRenderingMode(.alwaysTemplate)
+        titleLabel.apply(font: .body1, text: "What do you want to listen to?")
+        imageView.image = UIImage(named: "iconSearch")?.withRenderingMode(.alwaysTemplate)
 
         addSubview(titleLabel)
         addSubview(imageView)

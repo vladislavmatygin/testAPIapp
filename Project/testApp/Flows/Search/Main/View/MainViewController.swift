@@ -169,7 +169,7 @@ extension MainViewController: CollectionViewLayoutDelegate {
 
             switch searchSection?.type {
             case .popular:
-                groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.43), heightDimension: .absolute(193))
+                groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.43), heightDimension: .absolute(140))
             default:
                 groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(54))
             }
