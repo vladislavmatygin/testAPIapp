@@ -6,7 +6,7 @@ final class MainHorizontalSection: AppCollectionSection {
         case watched
         case defaultBanner
         case popular
-        case reviews
+        case artistAlbums
     }
 
     override func drawSelf() {}

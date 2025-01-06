@@ -4,6 +4,7 @@ import Foundation
 final class MainDataSource: DataSource {
     struct Model {
         var popularAlbums: [PopularAlbumUIO]
+        var artistAlbums: [ArtistAlbumUIO]
     }
 
     private lazy var popularDefaultSection = EmptySection.Item()
@@ -14,19 +15,39 @@ final class MainDataSource: DataSource {
         type: .popular
     )
 
+    private lazy var artistAlbumsDefaultSection = EmptySection.Item()
+    private lazy var artistAlbumsTitleItem = MainTitleCell.Item(
+        text: "Artist Albums"
+    )
+    private lazy var artistAlbumsSection = MainHorizontalSection.Item(
+        type: .artistAlbums
+    )
+
     func make(model: Model) -> Snapshot {
         collectionDataSource.make { make in
             make.appendSections(
                 popularDefaultSection,
                 popularTitleItem,
-                popularSection
+                popularSection,
+
+                artistAlbumsDefaultSection,
+                artistAlbumsTitleItem,
+                artistAlbumsSection
             )
 
             if !model.popularAlbums.isEmpty {
                 make.appendItems(popularTitleItem, toSection: popularDefaultSection)
                 make.appendItems(
-                    makeViewedObjectItems(model.popularAlbums),
+                    makePopularObjectItems(model.popularAlbums),
                     toSection: popularSection
+                )
+            }
+
+            if !model.artistAlbums.isEmpty {
+                make.appendItems(artistAlbumsTitleItem, toSection: artistAlbumsDefaultSection)
+                make.appendItems(
+                    makeArtistAlbumsItems(model.artistAlbums),
+                    toSection: artistAlbumsSection
                 )
             }
         }
@@ -34,7 +55,7 @@ final class MainDataSource: DataSource {
 
     // MARK: - Private methods
 
-    private func makeViewedObjectItems(_ values: [PopularAlbumUIO]) -> [CardOnMainCell.Item] {
+    private func makePopularObjectItems(_ values: [PopularAlbumUIO]) -> [CardOnMainCell.Item] {
         let maxPopularObjects = 7
         let visiblePopularObjects = values.count > maxPopularObjects ?
             Array(values[0..<maxPopularObjects]) :
@@ -44,6 +65,25 @@ final class MainDataSource: DataSource {
             return CardOnMainCell.Item(
                 data: object,
                 card: .short(maxPopularObjects, object.title)
+            )
+        }
+    }
+    
+    private func makeArtistAlbumsItems(_ values: [ArtistAlbumUIO]) -> [ArtistAlbumsCell.Item] {
+        let maxPopularObjects = 7
+        let visiblePopularObjects = values.count > maxPopularObjects ?
+            Array(values[0..<maxPopularObjects]) :
+            values
+
+        return visiblePopularObjects.map { object -> ArtistAlbumsCell.Item in
+            return ArtistAlbumsCell.Item(
+                data: object,
+                card: .full(
+                    maxPopularObjects,
+                    object.title,
+                    "Tracks: \(object.totalTracks)",
+                    object.releaseDate
+                )
             )
         }
     }

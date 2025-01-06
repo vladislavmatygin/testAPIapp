@@ -5,6 +5,7 @@ public final class SearchService {
 
     public enum Action {
         case addPopularAlbums([PopularAlbumUIO])
+        case addArtistAlbums([ArtistAlbumUIO])
     }
 
     // MARK: - Properties
@@ -23,8 +24,17 @@ public final class SearchService {
     func getPopularAlbums(
         limit: Int = 7
     ) async throws -> [PopularAlbumUIO] {
-        let dto = try await networkService.fetchPopularAlbums(limit: limit)
-        _searchActionSubject.send(.addPopularAlbums(SearchMapper.map(dto)))
-        return SearchMapper.map(dto)
+        let data = try await networkService.fetchPopularAlbums(limit: limit)
+        _searchActionSubject.send(.addPopularAlbums(SearchMapper.map(data)))
+        return SearchMapper.map(data)
+    }
+
+    func getArtistAlbums(
+        id: String = "4dM6NDYSfLcspt8GLoT5aE",
+        limit: Int = 7
+    ) async throws -> [ArtistAlbumUIO] {
+        let data = try await networkService.fetchArtistAlbums(id: id, limit: limit)
+        _searchActionSubject.send(.addArtistAlbums(SearchMapper.map(data)))
+        return SearchMapper.map(data)
     }
 }

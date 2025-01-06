@@ -91,7 +91,8 @@ final class MainViewController: AppViewController, ProgressView {
         collectionView.register(header: EmptySection.self)
         collectionView.register(
             MainTitleCell.self,
-            CardOnMainCell.self
+            CardOnMainCell.self,
+            ArtistAlbumsCell.self
         )
 
         collectionView.layer.cornerRadius = 16
@@ -170,6 +171,8 @@ extension MainViewController: CollectionViewLayoutDelegate {
             switch searchSection?.type {
             case .popular:
                 groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.43), heightDimension: .absolute(140))
+            case .artistAlbums:
+                groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .absolute(170))
             default:
                 groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(54))
             }

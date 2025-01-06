@@ -6,7 +6,7 @@ public struct Environment {
     }()
 
     public static let accessToken: String = {
-       "Bearer BQDsMazx_qzNV0ZQyhxPcsSo9byRd4wo6dGxxwCms2wPumEjpi9rgwmE96Rrc-yY8UCnPsy_th4tiYbNZ5W-ruT9yVK2Rr1N77CqOkC-NJOFNQTt5mo"
+       "Bearer BQDMK7bR0CjfEZURPM7OaAkDcihNDmX78bzJudpcmnbDEyremThw_eHs3fAZhLThjYXZudcQ_DbraW-nPtMLlUzvVb0NYXzuP4wrvDazTP7fz3K1Ysc"
     }()
 }
 
