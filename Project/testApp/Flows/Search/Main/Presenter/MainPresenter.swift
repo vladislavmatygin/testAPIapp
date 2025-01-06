@@ -10,6 +10,7 @@ protocol MainPresenterOutput: AnyObject, ViewOutput {
 final class MainPresenter {
     private struct State {
         var popularAlbums: [PopularAlbumUIO] = []
+        var artistAlbums: [ArtistAlbumUIO] = []
     }
 
     // MARK: - Properties
@@ -39,7 +40,8 @@ final class MainPresenter {
 
             let result = dataSource.make(
                 model: MainDataSource.Model(
-                    popularAlbums: state.popularAlbums
+                    popularAlbums: state.popularAlbums,
+                    artistAlbums: state.artistAlbums
                 )
             )
 
@@ -53,6 +55,8 @@ final class MainPresenter {
                 switch action {
                 case let .addPopularAlbums(albums):
                     self?.state.popularAlbums = albums
+                case let .addArtistAlbums(albums):
+                    self?.state.artistAlbums = albums
                 }
             }.store(in: &cancellables)
     }
@@ -69,8 +73,9 @@ private extension MainPresenter {
     func makeRequest() {
         Task {
             async let popularAlbums: () = getPopularAlbums()
+            async let artistAlbums: () = getArtistAlbums()
 
-            _ = try await popularAlbums
+            _ = try await (popularAlbums, artistAlbums)
         }.fail {
             logger.error("\(String(describing: $0))")
         }
@@ -81,6 +86,14 @@ private extension MainPresenter {
 
         await setState {
             $0.popularAlbums = albums
+        }
+    }
+
+    func getArtistAlbums() async throws {
+        let albums = try await searchService.getArtistAlbums()
+
+        await setState {
+            $0.artistAlbums = albums
         }
     }
 }

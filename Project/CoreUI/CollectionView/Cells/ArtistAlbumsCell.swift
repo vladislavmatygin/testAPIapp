@@ -3,11 +3,11 @@ import SDWebImage
 import SnapKit
 
 @MainActor
-protocol CardOnMainCellDelegate: AnyObject {
-    func didTapCell(_ item: CardOnMainCell.Item)
+protocol ArtistAlbumsCellDelegate: AnyObject {
+    func didTapCell(_ item: ArtistAlbumsCell.Item)
 }
 
-final class CardOnMainCell: AppCollectionCell, Delegatable {
+final class ArtistAlbumsCell: AppCollectionCell, Delegatable {
     // MARK: - Types
 
     enum Card: Hashable {
@@ -24,7 +24,7 @@ final class CardOnMainCell: AppCollectionCell, Delegatable {
 
     // MARK: - Properties
 
-    weak var delegate: CardOnMainCellDelegate?
+    weak var delegate: ArtistAlbumsCellDelegate?
 
     private var item: Item?
 
@@ -102,12 +102,12 @@ final class CardOnMainCell: AppCollectionCell, Delegatable {
 }
 
 // MARK: - Configurable
-extension CardOnMainCell: CollectionConfigurable {
+extension ArtistAlbumsCell: CollectionConfigurable {
     struct Item: CollectionItemable {
         let identifier: CollectionIdentifier
         let card: Card
-        let data: PopularAlbumUIO
-        init(data: PopularAlbumUIO, card: Card) {
+        let data: ArtistAlbumUIO
+        init(data: ArtistAlbumUIO, card: Card) {
             identifier = CollectionIdentifier(card.hashValue)
             self.data = data
             self.card = card
