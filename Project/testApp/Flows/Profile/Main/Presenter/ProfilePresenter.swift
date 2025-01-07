@@ -36,9 +36,7 @@ final class ProfilePresenter {
         $state.sink { [weak self] state in
             guard let self else { return }
 
-            let result = dataSource.make(
-                model: ProfileDataSource.Model()
-            )
+            let result = dataSource.make()
 
             view?.apply(.isLoading(false))
             view?.apply(.snapshot(result))

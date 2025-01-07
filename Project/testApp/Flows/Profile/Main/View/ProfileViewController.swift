@@ -67,21 +67,14 @@ final class ProfileViewController: AppViewController, ProgressView {
 
     override func drawSelf() {
         collectionView.layoutDelegate = self
-
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
 
-//        collectionView.register(header: MainHorizontalSection.self)
-//        collectionView.register(header: EmptySection.self)
-//        collectionView.register(
-//            MainTitleCell.self,
-//            SUCardOnMainCell.self,
-//            MainReviewCell.self,
-//            MainReviewSkeletonCell.self,
-//            MainRecentSearchCell.self,
-//            MainBannerCell.self,
-//            MainOtherPeopleReviewCell.self
-//        )
+        collectionView.register(header: EmptySection.self)
+        collectionView.register(
+            ProfileUserCell.self,
+            ProfilePlainCell.self
+        )
 
         collectionView.layer.cornerRadius = 16
         collectionView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
@@ -100,7 +93,7 @@ final class ProfileViewController: AppViewController, ProgressView {
     }
 
     override func makeAppearance() {
-        view.backgroundColor = theme.backgroundSuccess
+        view.backgroundColor = theme.backgroundExtraSurface
     }
 }
 
@@ -134,17 +127,25 @@ extension ProfileViewController: CollectionViewLayoutDelegate {
     func makeLayout(dataSource: CollectionDataSource) -> UICollectionViewLayout {
         let config = UICollectionViewCompositionalLayoutConfiguration()
         let layout = UICollectionViewCompositionalLayout(sectionProvider: { [weak self] index, _ in
-            guard let self, let id = dataSource.sectionIdentifier(for: index) else {
+            guard let self, let id = dataSource.sectionIdentifier(for: index) ,
+                  let model = dataSource.getSection(id) else {
                 fatalError()
             }
-
-//            let searchSection = dataSource.getSection(id) as? MainHorizontalSection.Item
 
             var groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(1))
             let horizontalInset: CGFloat = 8
             var sectionContentInsets: NSDirectionalEdgeInsets = .zero
 
-            groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(54))
+            if let section = model as? ProfileDataSource.Section {
+                switch section.type {
+                case .profile:
+                    groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(100))
+                case .settings:
+                    groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(72))
+                default:
+                    groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(100))
+                }
+            }
 
             let item = NSCollectionLayoutItem(
                 layoutSize: NSCollectionLayoutSize(
@@ -152,7 +153,7 @@ extension ProfileViewController: CollectionViewLayoutDelegate {
                     heightDimension: .fractionalHeight(1)
                 )
             )
-            let group = NSCollectionLayoutGroup.horizontal(
+            let group = NSCollectionLayoutGroup.vertical(
                 layoutSize: groupSize,
                 subitems: [item]
             )
@@ -163,7 +164,7 @@ extension ProfileViewController: CollectionViewLayoutDelegate {
             section.contentInsetsReference = .readableContent
             section.interGroupSpacing = -8
 
-            section.orthogonalScrollingBehavior = .continuous
+            section.orthogonalScrollingBehavior = .none
             section.contentInsets = sectionContentInsets
 
             section.visibleItemsInvalidationHandler = { items, offset, _ in
