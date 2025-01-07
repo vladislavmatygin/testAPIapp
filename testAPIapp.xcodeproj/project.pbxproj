@@ -64,6 +64,12 @@
 		692A3C4C2D13335B0010EF81 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692A3C4B2D13335B0010EF81 /* NetworkService.swift */; };
 		692A3C4E2D1334A90010EF81 /* ApiConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692A3C4D2D1334A90010EF81 /* ApiConfigurator.swift */; };
 		692A3C512D13360F0010EF81 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692A3C502D13360F0010EF81 /* Helpers.swift */; };
+		6968754D2D2D444B00E94E1E /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6968754C2D2D444900E94E1E /* UserView.swift */; };
+		6968754F2D2D449500E94E1E /* AppTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6968754E2D2D448E00E94E1E /* AppTag.swift */; };
+		696875512D2D479F00E94E1E /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696875502D2D479D00E94E1E /* GradientView.swift */; };
+		696875532D2D480A00E94E1E /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696875522D2D480900E94E1E /* PaddingLabel.swift */; };
+		696875552D2D49B300E94E1E /* ProfileUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696875542D2D49B200E94E1E /* ProfileUserCell.swift */; };
+		696875572D2D846400E94E1E /* ProfilePlainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696875562D2D846200E94E1E /* ProfilePlainCell.swift */; };
 		69B26A512D2C49E700ADB629 /* ArtistAlbumsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B26A502D2C49E500ADB629 /* ArtistAlbumsDTO.swift */; };
 		69B26A532D2C4A5600ADB629 /* ArtistAlbumUIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B26A522D2C4A5400ADB629 /* ArtistAlbumUIO.swift */; };
 		69B26A552D2C510300ADB629 /* ArtistAlbumsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B26A542D2C510200ADB629 /* ArtistAlbumsCell.swift */; };
@@ -149,6 +155,12 @@
 		692A3C4B2D13335B0010EF81 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		692A3C4D2D1334A90010EF81 /* ApiConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConfigurator.swift; sourceTree = "<group>"; };
 		692A3C502D13360F0010EF81 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		6968754C2D2D444900E94E1E /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
+		6968754E2D2D448E00E94E1E /* AppTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTag.swift; sourceTree = "<group>"; };
+		696875502D2D479D00E94E1E /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		696875522D2D480900E94E1E /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
+		696875542D2D49B200E94E1E /* ProfileUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUserCell.swift; sourceTree = "<group>"; };
+		696875562D2D846200E94E1E /* ProfilePlainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePlainCell.swift; sourceTree = "<group>"; };
 		69B26A502D2C49E500ADB629 /* ArtistAlbumsDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistAlbumsDTO.swift; sourceTree = "<group>"; };
 		69B26A522D2C4A5400ADB629 /* ArtistAlbumUIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistAlbumUIO.swift; sourceTree = "<group>"; };
 		69B26A542D2C510200ADB629 /* ArtistAlbumsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistAlbumsCell.swift; sourceTree = "<group>"; };
@@ -348,6 +360,7 @@
 			children = (
 				6900B1E22D10C81E00119A41 /* ActivityIndicator */,
 				6900B18A2D109D1400119A41 /* ShadowView.swift */,
+				696875502D2D479D00E94E1E /* GradientView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -527,7 +540,9 @@
 		6900B1EE2D10CD2400119A41 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				696875522D2D480900E94E1E /* PaddingLabel.swift */,
 				6900B1EF2D10CD5E00119A41 /* ProgressView.swift */,
+				6968754E2D2D448E00E94E1E /* AppTag.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -580,6 +595,23 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		6968754A2D2D442200E94E1E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				696875562D2D846200E94E1E /* ProfilePlainCell.swift */,
+				696875542D2D49B200E94E1E /* ProfileUserCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		6968754B2D2D443000E94E1E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6968754C2D2D444900E94E1E /* UserView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		69DAB47F2D11EB7C007F4726 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -609,6 +641,8 @@
 		69DAB4822D11EBB2007F4726 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				6968754B2D2D443000E94E1E /* Views */,
+				6968754A2D2D442200E94E1E /* Cells */,
 				69DAB48D2D11F393007F4726 /* ProfileViewController.swift */,
 			);
 			path = View;
@@ -800,6 +834,7 @@
 				69DAB4922D11F3BA007F4726 /* ProfileRouter.swift in Sources */,
 				69FA8A172D15FB4C004AD267 /* APILogger.swift in Sources */,
 				6900B1B72D10A84800119A41 /* NSAttributedString+Helper.swift in Sources */,
+				696875532D2D480A00E94E1E /* PaddingLabel.swift in Sources */,
 				69B26A532D2C4A5600ADB629 /* ArtistAlbumUIO.swift in Sources */,
 				69FA8A2A2D1605B8004AD267 /* SearchMapper.swift in Sources */,
 				6900B1572D1089F400119A41 /* SceneDelegate.swift in Sources */,
@@ -810,12 +845,15 @@
 				69B26A512D2C49E700ADB629 /* ArtistAlbumsDTO.swift in Sources */,
 				692A3C4C2D13335B0010EF81 /* NetworkService.swift in Sources */,
 				6900B1792D10957500119A41 /* LightTheme.swift in Sources */,
+				696875512D2D479F00E94E1E /* GradientView.swift in Sources */,
 				692A3C512D13360F0010EF81 /* Helpers.swift in Sources */,
+				696875552D2D49B300E94E1E /* ProfileUserCell.swift in Sources */,
 				6900B1F72D10CEF700119A41 /* UIViewController+Extentions.swift in Sources */,
 				69B26A552D2C510300ADB629 /* ArtistAlbumsCell.swift in Sources */,
 				6900B1772D10955900119A41 /* Themeable.swift in Sources */,
 				69DAB48E2D11F393007F4726 /* ProfileViewController.swift in Sources */,
 				6900B1882D109A0400119A41 /* AppearanceConfigurator.swift in Sources */,
+				6968754D2D2D444B00E94E1E /* UserView.swift in Sources */,
 				6900B1AA2D10A75800119A41 /* TypographyExtensions.swift.swift in Sources */,
 				6900B1D72D10BB6500119A41 /* Logger.swift in Sources */,
 				6900B1E82D10CA3500119A41 /* UICollectionView.swift in Sources */,
@@ -823,12 +861,14 @@
 				6900B1C72D10B70900119A41 /* ViewOutput.swift in Sources */,
 				6900B1802D10970800119A41 /* UIApplication+UIWindow.swift in Sources */,
 				6900B1A82D10A72800119A41 /* UILabel+Typography.swift in Sources */,
+				6968754F2D2D449500E94E1E /* AppTag.swift in Sources */,
 				6900B1B02D10A7F000119A41 /* String+Wrapper.swift in Sources */,
 				6900B1AC2D10A77000119A41 /* Typography.swift in Sources */,
 				6900B1DF2D10C7BE00119A41 /* LoadingCell.swift in Sources */,
 				69FA8A282D160597004AD267 /* PopularAlbumUIO.swift in Sources */,
 				6926685D2D26DF9F007F8642 /* Task.swift in Sources */,
 				6900B17C2D10969200119A41 /* UIColor+Extension.swift in Sources */,
+				696875572D2D846400E94E1E /* ProfilePlainCell.swift in Sources */,
 				692A3C482D132D150010EF81 /* MainTitleCell.swift in Sources */,
 				69DAB4852D11EBE0007F4726 /* ProfileBuilder.swift in Sources */,
 				69FA8A152D15F9D1004AD267 /* MultipartParameter.swift in Sources */,
